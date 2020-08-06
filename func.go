@@ -78,7 +78,7 @@ func MapCase2Camel(data interface{}) (map[string]interface{}, bool) {
 	if m, ok := data.(map[string]interface{}); ok {
 		for k, v := range m {
 			if reflect.TypeOf(v).Kind() == reflect.Map {
-				m, ok = MapCamel2Case(v.(map[string]interface{}))
+				m, ok = MapCase2Camel(v.(map[string]interface{}))
 				if ok {
 					info[Case2Camel(k)] = m
 				}
