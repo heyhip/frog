@@ -21,11 +21,10 @@ func StructToMap(obj interface{}) map[string]interface{} {
 		if objType.Field(i).Type.Kind() == reflect.Struct {
 			tmp := StructToMap(objValue.Field(i).Interface())
 			for k, v := range tmp {
-				m[k] = v
+				m[Camel2Case(k)] = v
 			}
 		} else {
-			m[objType.Field(i).Name] = objValue.Field(i).Interface()
-
+			m[Camel2Case(objType.Field(i).Name)] = objValue.Field(i).Interface()
 		}
 	}
 
